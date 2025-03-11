@@ -18,16 +18,24 @@ int main(){
     logMessage("Prueba ERROR",3);
     logMessage("Prueba CRITICAL",4);
     logMessage("Prueba ERROR", "main.cpp", 30);
-    cout << "Si se introduce un usuario diferente a 'admin' se generara un mensaje de acceso denegado en el archivo log.txt y se saldra del programa con error 1" << endl;
+    cout << "Si se introduce un usuario diferente a 'admin' se generara un mensaje de acceso denegado en el archivo log.txt y se saldra del programa con un error." << endl;
     cout << "Ingrese un usuario: ";
     string usuario;
     cin >> usuario;
-    if (usuario != "admin"){
-        logMessage("Access Denied", usuario);
+
+    try{
+        if(usuario != "admin"){
+            logMessage("Access Denied",usuario);
+            throw "Usuario no valido";
+        }
+        else{
+            logMessage("Access Granted",usuario);
+            cout<<"Access Granted"<<endl;
+        }
+    }
+    catch(const char* e){
+        cout<<"Error: "<<e<<endl;
         return 1;
     }
-
-    else{
-        logMessage("Access Granted", usuario);
-    }
+    return 0;
 }
