@@ -1,5 +1,5 @@
-#include "Ejercicio1/Ejercicio1.h"
-#include "Ejercicio2/Ejercicio2.h"
+#include "Ejercicio1/Ejercicio1.cpp"
+#include "Ejercicio2/Ejercicio2.cpp"
 
 void freeMatrix(int** matriz, int n){
     for(int i = 0; i < n; i++){
@@ -9,9 +9,12 @@ void freeMatrix(int** matriz, int n){
 }
 
 int main(){
-    int** matriz = Ejercicio1A(3);
-    Ejercicio1B(matriz,3);
-    freeMatrix(matriz,3);
+    int n = -1;
+    int** matriz = Ejercicio1A(n);
+    if (matriz){
+        Ejercicio1B(matriz,n);
+        freeMatrix(matriz,n);
+    }
     logMessage("Prueba DEBUG",0);
     logMessage("Prueba INFO",1);
     logMessage("Prueba WARNING",2);
