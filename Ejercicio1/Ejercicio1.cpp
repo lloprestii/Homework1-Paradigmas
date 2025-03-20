@@ -36,3 +36,20 @@ void Ejercicio1B(int** matriz, int n){
         cout << "M[" << i << "][" << j << "] = " << matriz[i][j] << endl;
     }
 }
+
+void free(int** matriz, int n){
+    for(int i = 0; i < n; i++){
+        delete[] matriz[i];
+    }
+    delete[] matriz; 
+}
+
+int main(){
+    int n = 3;
+    int** matriz = Ejercicio1A(n);
+    if (matriz){
+        Ejercicio1B(matriz,n);
+        free(matriz,n);
+    }
+    return 0;
+}

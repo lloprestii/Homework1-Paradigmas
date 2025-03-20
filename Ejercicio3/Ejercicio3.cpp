@@ -1,22 +1,7 @@
 #include "Ejercicio3.h"
-
-/*
-Implemente  una  lista  enlazada  que  utilice  nodos  que  simplemente  contengan  un 
-valor y una dirección de memoria de un nodo. Adicionalmente, agregue las siguientes 
-funciones para manejar la lista: 
-i. create_node(): devuelve un nodo. 
-ii. push_front(): inserta un nodo al frente de la lista. 
-iii. push_back(): inserta un nodo al final de la lista. 
-iv. insert(): inserta un nodo en la posición que se le pase a la función. Si se le pasa 
-una posición mayor al largo de la lista, se debe indicar lo ocurrido y se debe de 
-agregar el nodo al final de la lista. 
-v. erase():  borra  un  nodo  en  la  posición  que  se  le  pase  a  la  función.  Similar  a  la 
-función insert(), si la posición es mayor que el largo de la lista, se debe de borrar 
-el último nodo. 
-vi. print_list(): imprime la lista completa, separando el valor en cada nodo con “->”. 
-Presentar ejemplos que verifiquen el funcionamiento requerido en las funciones i-vi y, 
-muy importante para el ejercicio, sólo utilizar smart pointers.  
-*/
+#include <iostream>
+#include <memory>
+using namespace std;
 
 typedef struct Node{
     int value;
@@ -114,4 +99,40 @@ void print_list(shared_ptr<List> lista){
         current = current->next;
     }
     cout << endl;
+}
+
+int main(){
+    shared_ptr<List> lista = make_shared<List>();
+    shared_ptr<Node> nodo1 = create_node(1);
+    shared_ptr<Node> nodo2 = create_node(2);
+    shared_ptr<Node> nodo3 = create_node(3);
+    shared_ptr<Node> nodo4 = create_node(4);
+    shared_ptr<Node> nodo5 = create_node(5);
+    shared_ptr<Node> nodo6 = create_node(6);
+    shared_ptr<Node> nodo7 = create_node(7);
+    shared_ptr<Node> nodo8 = create_node(8);
+    shared_ptr<Node> nodo9 = create_node(9);
+    shared_ptr<Node> nodo10 = create_node(10);
+    push_front(lista, nodo1);
+    push_front(lista, nodo2);
+    push_front(lista, nodo3);
+    push_front(lista, nodo4);
+    push_front(lista, nodo5);
+    push_front(lista, nodo6);
+    push_front(lista, nodo7);
+    push_front(lista, nodo8);
+    push_front(lista, nodo9);
+    push_front(lista, nodo10);
+    print_list(lista);
+    shared_ptr<Node> nodo11 = create_node(11);
+    push_back(lista, nodo11);
+    print_list(lista);
+    shared_ptr<Node> nodo12 = create_node(12);
+    insert(lista, nodo12, 5);
+    print_list(lista);
+    erase(lista, 5);
+    print_list(lista);
+    erase(lista, 100);
+    print_list(lista);
+    return 0;
 }
