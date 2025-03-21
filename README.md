@@ -1,1 +1,1 @@
-# Homework1-Paradigmas
+Para correr el codigo tenes que pararte en la carpeta correspondiente y ejecutar el comando make por terminal (Previamente vas a necesitar tener instalado make)

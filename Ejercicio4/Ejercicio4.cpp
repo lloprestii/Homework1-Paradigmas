@@ -24,22 +24,22 @@ constexpr bool compararConstexpr(const char* str1, const char* str2) {
 int main() {
 
     // Mido el tiempo de ejecucion de la funcion compararStringsRecursivo
-    auto startExec = chrono::high_resolution_clock::now();
+    auto startTime = chrono::high_resolution_clock::now();
     bool resultado1 = compararStringsRecursivo("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras purus sapien, ullamcorper eget dignissim quis, vestibulum sit amet tellus.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras purus sapien, ullamcorper eget dignissim quis, vestibulum sit amet tellus.", 0);
-    auto endExec = chrono::high_resolution_clock::now();
-    auto tiempoEjecucion = chrono::duration_cast<chrono::nanoseconds>(endExec - startExec);
+    auto endTime = chrono::high_resolution_clock::now();
+    auto tiempoRecursivo = chrono::duration_cast<chrono::nanoseconds>(endTime - startTime);
 
-    cout << "Comparación en tiempo de ejecución: " << (resultado1 ? "Iguales" : "Diferentes") << endl;
-    cout << "Tiempo de ejecución: " << tiempoEjecucion.count() << " nanosegundos" << endl;
+    cout << "Comparacion en tiempo de ejecucion: " << (resultado1 ? "Iguales" : "Diferentes") << endl;
+    cout << "Tiempo de ejecucion: " << tiempoRecursivo.count() << " nanosegundos" << endl;
 
     // Mido el tiempo de ejecucion de la funcion compararConstexpr
-    auto startComp = chrono::high_resolution_clock::now();
+    auto startTime_ = chrono::high_resolution_clock::now();
     constexpr bool resultadoConstexpr = compararConstexpr("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras purus sapien, ullamcorper eget dignissim quis, vestibulum sit amet tellus.","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras purus sapien, ullamcorper eget dignissim quis, vestibulum sit amet tellus.");
-    auto endComp = chrono::high_resolution_clock::now();
-    auto tiempoCompilacion = chrono::duration_cast<chrono::nanoseconds>(endComp - startComp);
+    auto endTime_ = chrono::high_resolution_clock::now();
+    auto tiempoCompilacion = chrono::duration_cast<chrono::nanoseconds>(endTime_ - startTime_);
 
-    cout << "Comparación en tiempo de compilación: " << (resultadoConstexpr ? "Iguales" : "Diferentes") << endl;
-    cout << "Tiempo de ejecución de comparación en compilación: " << tiempoCompilacion.count() << " nanosegundos" << endl;
+    cout << "Comparacion en tiempo de compilacion: " << (resultadoConstexpr ? "Iguales" : "Diferentes") << endl;
+    cout << "Tiempo de ejecucion de comparacion en compilacion: " << tiempoCompilacion.count() << " nanosegundos" << endl;
 
     /*
     - Despues de hacer varios test con strings de diferente tamaño pude notar que el tiempo de ejecucion de la funcion recursiva depende mucho del tamaño de los strings.
